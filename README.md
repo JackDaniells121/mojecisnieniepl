@@ -14,7 +14,7 @@ www.mojecisnienia.pl
 
 # Data storage
 
-All data of Your pressure log are stored on local storage on Your browser.
+All data of Your pressure log are stored in local storage of Your browser. None data stored on server.
 
 # TODO
 
