@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="slider.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    </head>
+    <body>
+        <div class="w-full items-center justify-center text-center" id="app">
+            <div class="flex items-center justify-center mb-4 mt-4">
+                <h1 class="text-5xl mr-4">Moje cisnienie</h1>
+                <span class="text-5xl"><i class="fa fa-heartbeat text-red-400" aria-hidden="true"></i></span>
+            </div>
+            <div id="history" class="bg-gray-100 border border-gray-300" style="max-height: 30rem; overflow: scroll;">
+                <div class="flex items-center justify-center">
+                    <button class="text-5xl mr-4 w-full" @click="changeSelectedMonthPrev"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
+                    <span class="text-xl w-full">{{currentMonth}} / {{currentYear}}</span>
+                    <button class="ml-4 text-5xl w-full"  @click="changeSelectedMonthNext"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
+                </div>
+                
+                <div v-for="(pressure, n) in pressures" >
+                    <div v-if="pressure.dateMonth == currentMonth && pressure.dateYear == currentYear">                  
+                        <p>
+                        <span>{{ pressure.dateMonth }}/{{ pressure.dateDay}}</span><span class="ml-4">{{ pressure.time }}</span>
+                        <span class="ml-4 cat text-5xl" v-bind:class="getClass(pressure)">{{ pressure.pressure1 }} / {{ pressure.pressure2 }}</span><span class="ml-4 text-lg">mmHg</span>
+                        <button class="ml-4 text-4xl" @click="removePressure(n)"><i class="fa fa-trash text-red-300" aria-hidden="true"></i></button>
+                        </p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">    
+                <datalist id="defaultNumbers1">
+                    <option value="120">
+                    <option value="125">
+                    <option value="130">
+                    <option value="132">
+                    <option value="135">
+                    <option value="138">
+                    <option value="140">
+                </datalist>
+                <datalist id="defaultNumbers2">
+                    <option value="60">
+                    <option value="65">
+                    <option value="70">
+                    <option value="75">
+                    <option value="80">
+                    <option value="85">
+                    <option value="90">
+                </datalist>
+                <div class="flex justify-center items-center pl-6">
+                    <button @click="plusOne" class="text-6xl mr-4"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                    <input class="shadow appearance-none border rounded w-3/12 py-2 px-3 text-5xl text-gray-700 leading-loose focus:outline-none focus:shadow-outline" id="bloodPressure1" type="number" 
+                    min="100" max="200" step="1" list="defaultNumbers1" value="1"
+                    v-model="newPressure1">
+                    <button @click="minusOne" class="ml-4 text-6xl"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                    <span class="text-5xl mr-4 ml-4">/</span>
+                    <input class="shadow appearance-none border rounded w-3/12 py-2 px-3 text-5xl text-gray-700 leading-loose focus:outline-none focus:shadow-outline" id="bloodPressure2" type="number" 
+                    min="60" max="120" step="1" list="defaultNumbers2" value="1"
+                    v-model="newPressure2">
+                    <button @click="addPressure" class="text-6xl w-2/12 ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+</button>
+                </div>
+                <div class="mt-4">
+                    <label for="range2">SYS</label>
+                    <input id="range2" name="range2" type="range" min="110" max="200"  v-model="newPressure1" >
+                    <label for="range1">DIA</label>
+                    <input id="range1" name="range1" type="range" min="50" max="120"   v-model="newPressure2" >
+                </div>
+            </div>
+        </div>
+            
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+        <script src="index.js"></script>
+        <script src="slider.js"></script>
+    </body>
+</html>

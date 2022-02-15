@@ -1,0 +1,16 @@
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+  }
+  .btn-blue {
+    @apply bg-blue-500 text-white;
+  }
+  .btn-blue:hover {
+    @apply bg-blue-700;
+  }
+
+.range__input-fill {
+    height: 2 rem !important;
+}
+.range input[type=range] {
+    height: 2 rem !important;
+}
