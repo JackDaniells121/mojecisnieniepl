@@ -6,7 +6,7 @@ Vue 3.0 + tailwind
 
 Suited best for mobile devices.
 
-www.mojecisnienie.pl
+www.mojecisnienia.pl
 
 # Mobile device preview
 
