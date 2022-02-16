@@ -26,13 +26,13 @@
                     <div v-if="pressure.dateMonth == currentMonth && pressure.dateYear == currentYear">                  
                         <p>
                         <span v-if="pressure.note">
-                            <button @click="showHistoryNote=!showHistoryNote"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                            <button @click="showHistoryNote = showHistoryNote ? null : n"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
                         </span>
                         <span>{{ pressure.dateMonth }}/{{ pressure.dateDay}}</span><span class="ml-4">{{ pressure.time }}</span>
                         <span class="ml-4 cat text-5xl" v-bind:class="getClass(pressure)">{{ pressure.pressure1 }} / {{ pressure.pressure2 }}</span><span class="ml-4 text-lg">mmHg</span>
                         <button class="ml-4 text-4xl" @click="removePressure(n)"><i class="fa fa-trash text-red-300" aria-hidden="true"></i></button>
                         </p>
-                        <div v-if="showHistoryNote">
+                        <div v-if="n == showHistoryNote">
                             <p>{{pressure.note}}</p>    
                         </div>
                         <hr>

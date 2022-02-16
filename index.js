@@ -57,6 +57,9 @@ new Vue({
         });
         this.newPressure1 = 130;
         this.newPressure2 = 80;
+        this.note = null;
+        this.showHistoryNote = false;
+        this.showNote = false;
         this.savePressures();
         this.scrollToBottomOfHistory()
       },
