@@ -104,7 +104,38 @@ new Vue({
             this.currentYear = parseInt(this.currentYear) - 1
             this.currentMonth = '12' 
         }
-       }
+       },
+       csvExport() {
+        //    let arrData = this.pressures;
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += [
+          Object.keys(this.pressures[0]).join(";"),
+          ...this.pressures.map(item => Object.values(item).join(";"))
+        ]
+          .join("\n")
+          .replace(/(^\[)|(\]$)/gm, "");
+  
+        const data = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", data);
+        link.setAttribute("download", "export.csv");
+        link.click();
+      },
+      pdfExport() {
+        window.jsPDF = window.jspdf.jsPDF;
+        var doc = new jsPDF();
+        this.pressures.forEach(function(pressure, i){
+            doc.text(20, 10 + (i * 10), 
+                pressure.dateYear + 
+                '/' + pressure.dateMonth + 
+                '/' + pressure.dateDay +
+                ' ' + pressure.time +   
+                ' | ' + pressure.pressure1 +
+                " / " + pressure.pressure2
+                );
+        });
+        doc.save('Test.pdf');
+      }
       
     }
   });

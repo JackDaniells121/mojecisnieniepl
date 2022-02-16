@@ -29,6 +29,15 @@
                         <hr>
                     </div>
                 </div>
+                <div class="flex justify-between">
+                    <button @click="pdfExport" class="ml-4">
+                        Download pdf <i class="fa fa-file-pdf-o text-xl" aria-hidden="true"></i>
+                    </button>
+                    <button @click="csvExport" class="mr-4">
+                        Download csv <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+                
             </div>
             <div class="mt-4">    
                 <datalist id="defaultNumbers1">
@@ -67,9 +76,12 @@
                     <label for="range1">DIA</label>
                     <input id="range1" name="range1" type="range" min="50" max="120"   v-model="newPressure2" >
                 </div>
+                
             </div>
         </div>
-            
+        <!-- js to pdf lib-->    
+        <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
         <script src="index.js"></script>
         <script src="slider.js"></script>
