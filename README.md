@@ -18,8 +18,9 @@ All data of Your pressure log are stored in local storage of Your browser. None 
 
 # TODO
 
-- xls export
-- file export
-- file import
-- statistics view / charts
+- [x] xls export
+- [x] csv export
+- [x] custom note
+- [ ] file import
+- [ ] statistics view / charts
 
