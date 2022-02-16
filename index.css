@@ -8,9 +8,21 @@
     @apply bg-blue-700;
   }
 
-.range__input-fill {
+/* .range__input-fill {
     height: 2 rem !important;
 }
 .range input[type=range] {
     height: 2 rem !important;
+} */
+
+/* The animation code */
+.logo {
+    animation: heartbeat 5s ease 1s infinite;
 }
+@keyframes heartbeat {
+    0%   {transform: rotate(0deg) scale(1.12)}
+    5%  {transform: rotate(1.6deg) scale(1.17)}
+    7%   {transform: rotate(-0.7deg) scale(1.12)}
+    10%  {transform: rotate(-2deg) scale(1.19)}
+    15% {transform: rotate(1.5deg) scale(1)}
+  }
