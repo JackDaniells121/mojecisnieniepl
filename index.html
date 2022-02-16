@@ -25,10 +25,16 @@
                 <div v-for="(pressure, n) in pressures" >
                     <div v-if="pressure.dateMonth == currentMonth && pressure.dateYear == currentYear">                  
                         <p>
+                        <span v-if="pressure.note">
+                            <button @click="showHistoryNote=!showHistoryNote"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                        </span>
                         <span>{{ pressure.dateMonth }}/{{ pressure.dateDay}}</span><span class="ml-4">{{ pressure.time }}</span>
                         <span class="ml-4 cat text-5xl" v-bind:class="getClass(pressure)">{{ pressure.pressure1 }} / {{ pressure.pressure2 }}</span><span class="ml-4 text-lg">mmHg</span>
                         <button class="ml-4 text-4xl" @click="removePressure(n)"><i class="fa fa-trash text-red-300" aria-hidden="true"></i></button>
                         </p>
+                        <div v-if="showHistoryNote">
+                            <p>{{pressure.note}}</p>    
+                        </div>
                         <hr>
                     </div>
                 </div>
@@ -78,6 +84,19 @@
                     <input id="range2" name="range2" type="range" min="110" max="200"  v-model="newPressure1" >
                     <label for="range1">DIA</label>
                     <input id="range1" name="range1" type="range" min="50" max="120"   v-model="newPressure2" >
+                </div>
+                <div class="mt-4">
+                    <label for="note">Notatki </label>
+                    <i class="ml-2  fa fa-sticky-note-o" aria-hidden="true"></i>
+                     
+                    <div v-if="showNote">
+                        <textarea id="note" class="w-11/12 mt-4 h-24 text-gray-700 text-4xl" v-model="note"></textarea>
+                    </div>
+                    <div v-else>
+                        <button class="text-5xl mt-4" @click="showNote=true">
+                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
                 
             </div>

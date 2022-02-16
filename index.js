@@ -7,6 +7,9 @@ new Vue({
       newPressure2: 80,
       currentMonth: null,
       currentYear: null,
+      note: null,
+      showNote: false,
+      showHistoryNote: false
     },
     mounted() {
         const month = new Date().getMonth()+1 < 10 ? '0' + (new Date().getMonth()+1) : new Date().getMonth()+1;
@@ -49,7 +52,8 @@ new Vue({
             dateYear : this.currentYear,
             dateMonth : this.currentMonth,
             dateDay : dateDay,
-            time : time
+            time : time,
+            note: this.note
         });
         this.newPressure1 = 130;
         this.newPressure2 = 80;
@@ -118,7 +122,7 @@ new Vue({
         const data = encodeURI(csvContent);
         const link = document.createElement("a");
         link.setAttribute("href", data);
-        link.setAttribute("download", "export.csv");
+        link.setAttribute("download", "Mojecisnienia.csv");
         link.click();
       },
       pdfExport() {
@@ -131,10 +135,11 @@ new Vue({
                 '/' + pressure.dateDay +
                 ' ' + pressure.time +   
                 ' | ' + pressure.pressure1 +
-                " / " + pressure.pressure2
+                " / " + pressure.pressure2 +
+                '  mmHg'
                 );
         });
-        doc.save('Test.pdf');
+        doc.save('Mojecisnienia.pdf');
       }
       
     }
