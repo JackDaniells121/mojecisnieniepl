@@ -10,7 +10,7 @@ www.mojecisnienia.pl
 
 # Mobile device preview
 
-![alt text](phone-preview.png)
+![alt text](img/mobile-preview.png)
 
 # Data storage
 
