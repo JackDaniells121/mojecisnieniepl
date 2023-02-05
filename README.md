@@ -8,7 +8,7 @@ Suited best for mobile devices.
 
 www.mojecisnienia.pl
 
-# Mobile device preview
+# Mobile preview
 
 ![alt text](img/mobile-preview.png)
 
